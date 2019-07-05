@@ -22,8 +22,19 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
   end
   
+   # Example on how to do notes_contents=(notes)
+   # def post_ids=(ids)
+   #   ids.each do |id|
+   #     post = Post.find(id)
+   #     self.posts << post
+   #   end
+   # end  
+  
   def note_contents=(notes)
-    
+    notes.each do |note|
+      content = Note.find(note)
+      self.notes << content
+    end
   end
   
   def note_contents
