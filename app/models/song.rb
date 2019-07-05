@@ -30,9 +30,17 @@ class Song < ActiveRecord::Base
    #   end
    # end  
   
-  def note_contents=(ids)
-    ids.each do |id|
-      note = Note.find(id)
+  # this way doesn't work
+  # def note_contents=(ids)
+  #   ids.each do |id|
+  #     note = Note.find(id)
+  #     self.notes << note
+  #   end
+  # end
+  
+  def note_contents=(contents)
+    contents.each do |content|
+      note = Note.find_or_create_by(content: content)
       self.notes << note
     end
   end
