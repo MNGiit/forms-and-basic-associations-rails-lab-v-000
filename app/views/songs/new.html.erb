@@ -10,7 +10,7 @@
   <%= f.text_field :genre_id, list: "song_genre_id" %>
   <datalist id="song_genre_id">
     <% Genre.all.each do |genre| %>
-      <option value="<%= genre %>">
+      <option value="<%= genre.id %>">
     <% end %>
   </datalist>
   
